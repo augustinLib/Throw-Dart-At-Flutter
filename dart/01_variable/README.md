@@ -109,3 +109,30 @@ void main() {
   name2?.isEmpty;
 }
 ```
+
+## final
+`var` 키워드 대신 `final` 키워드를 사용하면, 변수를 한 번만 할당할 수 있다. (javascript와 typescript에서의 const와 같은 역할)
+
+```dart
+void main(List<String> args) {
+  final name = 'Dart';
+  // name = 'Flutter'; // Error: final 변수는 한 번 할당된 이후에는 값을 변경할 수 없다.
+  print(name);
+}
+```
+
+## late
+`late` 키워드는 `var`이나 `final`키워드 앞에 붙여서 사용할 수 있다.  
+이러한 `late`키워드는 초기 데이터 없이 변수를 선언할 수 있게 해준다.  
+```dart
+void main() {
+  // late 키워드를 사용하면, 변수를 선언할 때 값을 할당하지 않아도 된다.
+  late final String name;
+// do somethong
+  name = 'Dart';
+  print(name);
+}
+```
+
+## const
+dart에서의 `const`는 javascript와 typescript에서의 `const`와는 다르다.
