@@ -26,9 +26,9 @@ void main() {
     print(name);
 }
 ```
-
+> 가능한 `var`키워드를 많이 사용하는 것이 권장되며,  
 > 함수나 메소드 내부에 지역 변수를 선언할 때는 `var` 키워드를 사용하고,  
-> class에서 변수나 property를 선언할 때에는 타입을 명시하여 변수를 생성한다.  
+> **class에서 변수나 property를 선언할 때에는 타입을 명시**하여 변수를 생성한다.  
 
 ## Dynamic type
 Dart에서 변수를 선언할 때, 변수에 아무것도 지정해주지 않으면 `dynamic` 타입이 된다.
@@ -114,10 +114,27 @@ void main() {
 `var` 키워드 대신 `final` 키워드를 사용하면, 변수를 한 번만 할당할 수 있다. (javascript와 typescript에서의 const와 같은 역할)
 
 ```dart
-void main(List<String> args) {
+void main() {
   final name = 'Dart';
   // name = 'Flutter'; // Error: final 변수는 한 번 할당된 이후에는 값을 변경할 수 없다.
   print(name);
+}
+```
+
+## const
+dart에서의 `const`는 javascript와 typescript에서의 `const`와는 다르다.  
+javascript와 typescript에서의 `const`는 dart에서의 `final`과 비슷한 역할을 한다.  
+
+dart에서 `final`은 runtime 상수, `const`는 compile-time 상수이다.  
+> **compile-time 상수**: 컴파일 시점에 값을 결정하는 상수. 즉, 컴파일 시점에 값을 알고 있는 값이어야 함  
+> **runtime 상수**: 런타임 시점에 값을 결정하는 상수. 즉, 런타임 시점에 값을 알고 있는 값이어야 함  
+즉, dart에서 `const`는 **컴파일 시점에 값을 이미 알고 있는 상수**이다.  
+
+
+```dart
+void main() {
+  const a = 10;
+  print(a);
 }
 ```
 
@@ -133,6 +150,3 @@ void main() {
   print(name);
 }
 ```
-
-## const
-dart에서의 `const`는 javascript와 typescript에서의 `const`와는 다르다.
