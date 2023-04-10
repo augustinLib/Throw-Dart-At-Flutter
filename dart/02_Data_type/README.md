@@ -58,3 +58,43 @@ void main() {
     numbers.add(5);
   }
 }
+```
+
+**collection for**는 아래와 같다.  
+```dart
+void main() {
+  var name_list = ["dart", "python", "javascript"];
+  var new_name_list = [
+    "RUST",
+    "GO",
+    "TypeScript",
+    for (var name in name_list) "major lang : $name",
+  ];
+
+  print(new_name_list);
+  // [RUST, GO, TypeScript, major lang : dart, major lang : python, major lang : javascript]
+}
+```
+
+
+## String Interpolation
+string interpolation은 text에 변수를 추가하는 방법이다  
+
+```dart
+void main() {
+  var name = "dart";
+  var age = 10;
+  var greeting = "Hello my name is $name and i'm ${age+2} years old";
+
+  print(greeting);
+}
+```
+이는 python에서의 f-string과 비슷하다  
+변수 앞에 $를 붙이고, {}를 사용하여 연산을 할 수 있다.
+
+
+## Map
+Dart에서의 Map은 python의 dictionary와 같다.  
+
+```dart
+```
