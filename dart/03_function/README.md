@@ -73,3 +73,56 @@ void main() {
     country: "Korea"));
 }
 ```
+
+## Optional Positional Parameter
+한 함수 내에서 positional parameter와 named parameter를 동시에 사용할 수 있다.
+```dart
+// 특정 parameter만 named argument로 받고 싶은 경우
+// 해당 parameter를 대괄호로 감싸준 뒤, 기본값을 지정해준다.
+String sayHello(String name, int age, [String? country = "USA"]) => "Hello $name, $age olds, came from $country";
+
+
+void main() {
+  var temp = sayHello("dart", 20);
+  print(temp);
+}
+```
+
+## Operator
+dart에서는 `+`, `-`, `*`, `/` 등의 연산자를 사용할 수 있다.
+그 외에, qq operator, qq assignment operator 등이 있다.  
+
+qq operator는 좌항이 null인 경우에 우항을 반환하고, null이 아닌 경우에는 좌항을 반환하는 operator이며,  
+qq assignment operator는 좌항이 null인 경우에 우항을 좌항에 할당하는 operator이다.  
+
+```dart
+// null일 경우의 분기를 따로 만들어줘야 함
+String upperCase(String? str) {
+  if (str == null) {
+    return "null";
+  }
+  return str.toUpperCase();
+}
+
+// null이 아닌 경우에 대문자 return, null인 경우에는 "null" return
+String upperCase2(String? str) => str != null ? str.toUpperCase() : "null";
+
+// QQ operator : ??
+// 좌항이 null이 아닌 경우에는 좌항을 반환하고, null인 경우에는 우항을 반환한다
+// null이 아닌 경우에 대문자 return, null인 경우에는 "null" return
+// 이때 str도 null일 가능성이 있기에 ? 연산자를 붙여줘야 한다
+String upperCase3(String? str) => str?.toUpperCase() ?? "null";
+
+
+void main() {
+  print(upperCase("dart"));
+  print(upperCase2("dart"));
+  print(upperCase3("dart"));
+
+  // QQ assignment operator : ??=
+  // 좌항이 null인 경우에 해당 좌항 변수에 우항을 할당한다
+  String? nickname;
+  nickname ??= "flutter";
+  print(nickname);
+}
+```
