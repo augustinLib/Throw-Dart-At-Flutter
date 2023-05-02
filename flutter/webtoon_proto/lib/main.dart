@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:webtoon_proto/widgets/button.dart';
+import 'package:webtoon_proto/widgets/currency_card.dart';
 
 void main() {
   runApp(const App());
@@ -22,185 +23,148 @@ class App extends StatelessWidget {
       // Scaffold : flutter의 모든 화면은 scaffold widget을 기반으로 만들어진다.
       home: Scaffold(
         backgroundColor: const Color(0xFF181818),
-        body: Padding(
-          // all : 상하좌우 10씩 padding
-          // all 말고 only를 쓰면 원하는 방향만 padding을 줄 수 있다.
-          // EdgeInsets.symmetric(horizontal: 10, vertical: 20) -> 상하 10, 좌우 20
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // SizedBox : 빈 박스를 만들어주는 widget
-              const SizedBox(
-                height: 80,
-              ),
-              Row(
-                // Row의 mainAxis = 가로축
-                // Row의 crossAxisAlignment = 세로축
-                // mainAxis는 주 축이고, crossAxisAlignment는 보조축이다.
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Column(
-                    // Column의 mainAxis = 세로축
-                    // Column의 crossAxisAlignment = 가로축
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Text(
-                        "Hey, Augustin",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 28,
-                            fontWeight: FontWeight.w800),
-                      ),
-                      Text(
-                        "Welcome back",
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
-                          fontSize: 18,
-                        ),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 120,
-              ),
-              Text(
-                "Total Balance",
-                style: TextStyle(
-                  color: Colors.white.withOpacity(0.8),
-                  fontSize: 22,
+        // SingleChildScrollView : child가 화면을 벗어나도 스크롤이 가능하게 해주는 widget
+        body: SingleChildScrollView(
+          child: Padding(
+            // all : 상하좌우 10씩 padding
+            // all 말고 only를 쓰면 원하는 방향만 padding을 줄 수 있다.
+            // EdgeInsets.symmetric(horizontal: 10, vertical: 20) -> 상하 10, 좌우 20
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // SizedBox : 빈 박스를 만들어주는 widget
+                const SizedBox(
+                  height: 80,
                 ),
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              const Text(
-                "\$5 194 482",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 48,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  // Container : 빈 박스를 만들어주는 widget
-                  // HTML의 div와 같은 역할
-
-                  // Custom widget인 button 사용
-                  Button(
-                    text: "Transfer",
-                    bgcolor: Color(0xFFF1B33B),
-                    textcolor: Colors.black,
-                  ),
-                  Button(
-                    text: "Request",
-                    bgcolor: Color(0xFF1F2123),
-                    textcolor: Colors.white,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 100,
-              ),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Wallets",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  Text(
-                    "View All",
-                    style: TextStyle(
-                      color: Colors.white.withOpacity(0.8),
-                      fontSize: 18,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Container(
-                // clipBehavior : child가 container의 영역을 벗어나면 어떻게 할지 정하는 속성
-                // Clip.harEdge : child가 container의 영역을 벗어나면 container의 영역을 벗어난 부분을 자른다.
-                clipBehavior: Clip.hardEdge,
-                decoration: BoxDecoration(
-                  color: const Color(0xFF1F2123),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Euro",
-                            style: TextStyle(
+                Row(
+                  // Row의 mainAxis = 가로축
+                  // Row의 crossAxisAlignment = 세로축
+                  // mainAxis는 주 축이고, crossAxisAlignment는 보조축이다.
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Column(
+                      // Column의 mainAxis = 세로축
+                      // Column의 crossAxisAlignment = 가로축
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        const Text(
+                          "Hey, Augustin",
+                          style: TextStyle(
                               color: Colors.white,
-                              fontSize: 32,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Row(
-                            children: [
-                              const Text(
-                                "6 428",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "EUR",
-                                style: TextStyle(
-                                  color: Colors.white.withOpacity(0.8),
-                                  fontSize: 20,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      // 해당 요소만 transform하게 됨으로써 다른 요소에 영향을 미치지 않음
-                      Transform.scale(
-                        scale: 2.2,
-                        child: Transform.translate(
-                          // offset : x, y 좌표를 지정해줌
-                          offset: const Offset(-5, 12),
-                          child: const Icon(
-                            Icons.euro_rounded,
-                            color: Colors.white,
-                            size: 88,
+                              fontSize: 28,
+                              fontWeight: FontWeight.w800),
+                        ),
+                        Text(
+                          "Welcome back",
+                          style: TextStyle(
+                            color: Colors.white.withOpacity(0.8),
+                            fontSize: 18,
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    )
+                  ],
+                ),
+                const SizedBox(
+                  height: 70,
+                ),
+                Text(
+                  "Total Balance",
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.8),
+                    fontSize: 22,
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: 5,
+                ),
+                const Text(
+                  "\$5 194 482",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 48,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    // Container : 빈 박스를 만들어주는 widget
+                    // HTML의 div와 같은 역할
+
+                    // Custom widget인 button 사용
+                    Button(
+                      text: "Transfer",
+                      bgcolor: Color(0xFFF1B33B),
+                      textcolor: Colors.black,
+                    ),
+                    Button(
+                      text: "Request",
+                      bgcolor: Color(0xFF1F2123),
+                      textcolor: Colors.white,
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 100,
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const Text(
+                      "Wallets",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 36,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    Text(
+                      "View All",
+                      style: TextStyle(
+                        color: Colors.white.withOpacity(0.8),
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const CurrencyCard(
+                  name: "EURO",
+                  code: "EUR",
+                  amount: "6 428",
+                  icon: Icons.euro_rounded,
+                  isInverted: false,
+                ),
+                Transform.translate(
+                  offset: const Offset(0, -20),
+                  child: const CurrencyCard(
+                    name: "Bitcoin",
+                    code: "BTC",
+                    amount: "9 785",
+                    icon: Icons.currency_bitcoin_outlined,
+                    isInverted: true,
+                  ),
+                ),
+                Transform.translate(
+                  offset: const Offset(0, -40),
+                  child: const CurrencyCard(
+                    name: "Dollar",
+                    code: "USD",
+                    amount: "428",
+                    icon: Icons.attach_money_outlined,
+                    isInverted: false,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
